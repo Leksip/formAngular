@@ -1,0 +1,92 @@
+<div class="border">
+  <div>
+    <h1>Поле профиля</h1>
+    <hr>
+  </div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div [class.invalid]="form.get('secondName').touched && form.get('secondName').invalid">
+      <label for="secondName">Фамилия <sup>*</sup></label>
+      <input id="secondName" type="text" formControlName="secondName">
+      <small
+        *ngIf="form.get('secondName').touched && form.get('secondName').invalid && form.get('secondName').errors['required']">Поле
+        не может быть пустым</small>
+    </div>
+    <div [class.invalid]="form.get('firstName').touched && form.get('firstName').invalid">
+      <label for="firstName">Имя<sup>*</sup></label>
+      <input id="firstName" type="text" formControlName="firstName">
+      <small
+        *ngIf="form.get('firstName').touched && form.get('firstName').invalid && form.get('firstName').errors['required']">Поле
+        не может быть пустым</small>
+    </div>
+    <div>
+      <label for="thirdName">Отчество</label>
+      <input id="thirdName" type="text">
+    </div>
+    <div [class.invalid]="form.get('birthday').touched && form.get('birthday').invalid">
+      <label for="birthday">Дата рождения <sup>*</sup></label>
+      <input id="birthday" type="date" formControlName="birthday">
+      <small
+        *ngIf="form.get('birthday').touched && form.get('birthday').invalid && form.get('birthday').errors['required']">Поле
+        не может быть пустым</small>
+    </div>
+    <div>
+      <p>Пол:</p>
+      <input type="radio" id="male" name="sex" class="check">
+      <label for="male">Мужской</label>
+      <input type="radio" id="female" name="sex" class="check">
+      <label for="female">Женский</label>
+
+    </div>
+    <div [class.invalid]="form.get('phoneNumber').touched && form.get('phoneNumber').invalid">
+      <label for="phoneNumber">Мобильный телефон<sup>*</sup></label>
+      <input id="phoneNumber" type="tel" maxlength="12" formControlName="phoneNumber" (ngModelChange)="currentNumber()">
+      <small
+        *ngIf="form.get('phoneNumber').touched && form.get('phoneNumber').invalid && form.get('phoneNumber').errors['required']">Поле
+        не может быть пустым</small>
+      <small
+        *ngIf="form.get('phoneNumber').touched && form.get('phoneNumber').invalid && form.get('phoneNumber').errors['minlength']">Телефон
+        должен содержать 11 цифр</small>
+    </div>
+
+    <div>
+      <label for="doctors">Лечащий врач</label>
+      <select id='doctors'>
+        <option>Иванов</option>
+        <option>Захарова</option>
+        <option>Черышева</option>
+      </select>
+    </div>
+    <div [class.invalid]="form.get('clientGroup').touched && form.get('clientGroup').invalid">
+      <label for="clientGroup">Группа клиентов <sup>*</sup></label>
+      <select multiple="multiple" id="clientGroup" size="3" class='multiselect' formControlName="clientGroup">
+        <option>Иванов</option>
+        <option>Захарова</option>
+        <option>Черышева</option>
+      </select>
+      <small
+        *ngIf="form.get('clientGroup').touched && form.get('clientGroup').invalid && form.get('clientGroup').errors['required']">Поле
+        не может быть пустым</small>
+    </div>
+    <div class="checked">
+      <input type="checkbox" id="sms" class="check">
+      <label for="sms">Не отправлять СМС</label>
+    </div>
+    <small><sup>*</sup> Поля обязательные для ввода</small>
+    <!--    <div *ngIf="this.form.invalid; else validButton">-->
+    <!--      <button class="btn-back">Отменить</button>-->
+    <!--      <button class="btn" type="button" (click)=error()>Далее</button>-->
+    <!--    </div>-->
+    <!--    <ng-template #validButton>-->
+    <!--      <div>-->
+    <!--        <button class="btn-back">Отменить</button>-->
+    <!--        <button class="btn" type="submit">Далее</button>-->
+    <!--      </div>-->
+    <!--    </ng-template>-->
+    <div>
+      <button class="btn-back">Отменить</button>
+      <button class="btn" type="button" (click)="onSubmit()">Далее</button>
+    </div>
+    <div *ngIf="err" class="error">{{err}}</div>
+    <button (click)="test()">TEST</button>
+  </form>
+</div>
