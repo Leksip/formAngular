@@ -1,0 +1,52 @@
+<div class="border">
+
+  <div>
+    <h1>Адрес</h1>
+    <hr>
+  </div>
+
+  <form [formGroup]="form">
+
+    <div>
+      <label for="index">Индекс</label>
+      <input id="index" type="number" formControlName="index">
+    </div>
+
+    <div>
+      <label for='country'>Страна</label>
+      <input id='country' type="text" formControlName='country'>
+    </div>
+
+    <div>
+      <label for='area'>Область</label>
+      <input id='area' type="text" formControlName='area'>
+    </div>
+
+    <div [class.invalid]="form.get('city').touched && form.get('city').invalid">
+      <label for="city">Город<sup>*</sup></label>
+      <input id="city" type="text" formControlName="city">
+      <small
+        *ngIf="form.get('city').touched && form.get('city').invalid && form.get('city').errors['required']">Введите
+        город</small>
+    </div>
+
+    <div>
+      <label for='street'>Улица</label>
+      <input id='street' type="text" formControlName='street'>
+    </div>
+
+    <div>
+      <label for='house'>Дом</label>
+      <input id='house' type="text" formControlName='house'>
+    </div>
+
+    <small><sup>*</sup> Поля обязательные для ввода</small>
+
+    <div>
+      <button class="btn-back" type="button" (click)="goPreviousPage()">Назад</button>
+      <button class="btn" type="button" (click)="nextPage()">Далее</button>
+    </div>
+
+    <div *ngIf="err" class="error">{{err}}</div>
+  </form>
+</div>
