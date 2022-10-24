@@ -67,9 +67,9 @@
     <div [class.invalid]="form.get('clientGroup').touched && form.get('clientGroup').invalid">
       <label for="clientGroup">Группа клиентов <sup>*</sup></label>
       <select multiple="multiple" id="clientGroup" size="3" class='multiselect' formControlName="clientGroup">
-        <option>Иванов</option>
-        <option>Захарова</option>
-        <option>Черышева</option>
+        <option value="Ivanov">Иванов</option>
+        <option value="Zakharova">Захарова</option>
+        <option value="Cherisheva">Черышева</option>
       </select>
       <small
         *ngIf="form.get('clientGroup').touched && form.get('clientGroup').invalid && form.get('clientGroup').errors['required']">Поле
@@ -83,12 +83,11 @@
 
     <small><sup>*</sup> Поля обязательные для ввода</small>
 
-    <div>
+    <div class="buttons">
       <button class="btn-back" type="button" (click)="clearForm()">Отменить</button>
       <button class="btn" type="button" (click)="nextPage()">Далее</button>
     </div>
 
     <div *ngIf="err" class="error">{{err}}</div>
-    <button type="button" (click)="test()"></button>
   </form>
 </div>

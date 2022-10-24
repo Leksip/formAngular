@@ -39,12 +39,9 @@ small {
   cursor: pointer;
   padding: 0.4rem 1.5rem;
   font-size: 1rem;
-  position: absolute;
-  margin-left: 25em;
   border-color: rgba(50, 50, 55, 0.63);
 
   &:disabled {
-    //cursor: not-allowed;
     background-color: rgba(42, 43, 84, 0.33);
     color: #111;
   }
@@ -56,7 +53,6 @@ small {
   cursor: pointer;
   padding: 0.4rem 1.2rem;
   font-size: 1rem;
-  margin-left: 0;
   border-color: rgba(50, 50, 55, 0.63);
 }
 
@@ -103,4 +99,17 @@ select {
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
+}
+.alert-danger {
+  background: red;
+  color: #fff;
+}
+.alert-success {
+  background: green;
+  color: #fff;
+}
+.buttons{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
 }

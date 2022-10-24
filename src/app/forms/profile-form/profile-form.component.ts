@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {FormService} from "../../shared/form.service";
 import {Router} from "@angular/router";
+import {AlertService} from "../../shared/alert.service";
 
 
 @Component({
@@ -21,12 +22,14 @@ export class ProfileFormComponent implements OnInit {
     clientGroup: [null, Validators.required],
     sms: [null]
   })
+
   err = ''
 
   constructor(
     private fb: FormBuilder,
     private formService: FormService,
-    private router: Router
+    private router: Router,
+    private alertService: AlertService
   ) {
   }
 
@@ -44,12 +47,13 @@ export class ProfileFormComponent implements OnInit {
 
   nextPage() {
     if (this.form.invalid) {
-      this.err = 'Заполните все обязательные поля'
+      this.alertService.danger('Заполните все обязательные поля')
     } else {
       this.err = ''
       this.formService.formProfileValue = {...this.form.value}
       this.form.reset()
       this.router.navigate(['address'])
+      this.alertService.success('Поля заполнены')
     }
   }
 
