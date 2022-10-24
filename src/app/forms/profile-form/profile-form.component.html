@@ -1,9 +1,12 @@
 <div class="border">
+
   <div>
     <h1>Поле профиля</h1>
     <hr>
   </div>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  <form [formGroup]="form">
+
     <div [class.invalid]="form.get('secondName').touched && form.get('secondName').invalid">
       <label for="secondName">Фамилия <sup>*</sup></label>
       <input id="secondName" type="text" formControlName="secondName">
@@ -11,6 +14,7 @@
         *ngIf="form.get('secondName').touched && form.get('secondName').invalid && form.get('secondName').errors['required']">Поле
         не может быть пустым</small>
     </div>
+
     <div [class.invalid]="form.get('firstName').touched && form.get('firstName').invalid">
       <label for="firstName">Имя<sup>*</sup></label>
       <input id="firstName" type="text" formControlName="firstName">
@@ -18,10 +22,12 @@
         *ngIf="form.get('firstName').touched && form.get('firstName').invalid && form.get('firstName').errors['required']">Поле
         не может быть пустым</small>
     </div>
+
     <div>
       <label for="thirdName">Отчество</label>
-      <input id="thirdName" type="text">
+      <input id="thirdName" type="text" formControlName="thirdName">
     </div>
+
     <div [class.invalid]="form.get('birthday').touched && form.get('birthday').invalid">
       <label for="birthday">Дата рождения <sup>*</sup></label>
       <input id="birthday" type="date" formControlName="birthday">
@@ -29,14 +35,15 @@
         *ngIf="form.get('birthday').touched && form.get('birthday').invalid && form.get('birthday').errors['required']">Поле
         не может быть пустым</small>
     </div>
+
     <div>
       <p>Пол:</p>
-      <input type="radio" id="male" name="sex" class="check">
+      <input type="radio" id="male" name="sex" class="check" formControlName="sex" value="male">
       <label for="male">Мужской</label>
-      <input type="radio" id="female" name="sex" class="check">
+      <input type="radio" id="female" name="sex" class="check" formControlName="sex" value="female">
       <label for="female">Женский</label>
-
     </div>
+
     <div [class.invalid]="form.get('phoneNumber').touched && form.get('phoneNumber').invalid">
       <label for="phoneNumber">Мобильный телефон<sup>*</sup></label>
       <input id="phoneNumber" type="tel" maxlength="12" formControlName="phoneNumber" (ngModelChange)="currentNumber()">
@@ -50,12 +57,13 @@
 
     <div>
       <label for="doctors">Лечащий врач</label>
-      <select id='doctors'>
+      <select id='doctors' formControlName="doctors">
         <option>Иванов</option>
         <option>Захарова</option>
         <option>Черышева</option>
       </select>
     </div>
+
     <div [class.invalid]="form.get('clientGroup').touched && form.get('clientGroup').invalid">
       <label for="clientGroup">Группа клиентов <sup>*</sup></label>
       <select multiple="multiple" id="clientGroup" size="3" class='multiselect' formControlName="clientGroup">
@@ -67,26 +75,20 @@
         *ngIf="form.get('clientGroup').touched && form.get('clientGroup').invalid && form.get('clientGroup').errors['required']">Поле
         не может быть пустым</small>
     </div>
+
     <div class="checked">
-      <input type="checkbox" id="sms" class="check">
+      <input type="checkbox" id="sms" class="check" formControlName="sms">
       <label for="sms">Не отправлять СМС</label>
     </div>
+
     <small><sup>*</sup> Поля обязательные для ввода</small>
-    <!--    <div *ngIf="this.form.invalid; else validButton">-->
-    <!--      <button class="btn-back">Отменить</button>-->
-    <!--      <button class="btn" type="button" (click)=error()>Далее</button>-->
-    <!--    </div>-->
-    <!--    <ng-template #validButton>-->
-    <!--      <div>-->
-    <!--        <button class="btn-back">Отменить</button>-->
-    <!--        <button class="btn" type="submit">Далее</button>-->
-    <!--      </div>-->
-    <!--    </ng-template>-->
+
     <div>
-      <button class="btn-back">Отменить</button>
-      <button class="btn" type="button" (click)="onSubmit()">Далее</button>
+      <button class="btn-back" type="button" (click)="clearForm()">Отменить</button>
+      <button class="btn" type="button" (click)="nextPage()">Далее</button>
     </div>
+
     <div *ngIf="err" class="error">{{err}}</div>
-    <button (click)="test()">TEST</button>
+    <button type="button" (click)="test()"></button>
   </form>
 </div>

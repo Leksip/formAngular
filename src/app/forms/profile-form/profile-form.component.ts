@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {FormService} from "../../form.service";
+import {FormService} from "../../shared/form.service";
+import {Router} from "@angular/router";
+
 
 @Component({
   selector: 'app-profile-form',
@@ -11,41 +13,53 @@ export class ProfileFormComponent implements OnInit {
   form: FormGroup = this.fb.group({
     firstName: [null, Validators.required],
     secondName: [null, Validators.required],
+    thirdName: [null],
     birthday: [null, Validators.required],
+    sex: [null],
+    doctors: [null],
     phoneNumber: ['+7', [Validators.required, Validators.minLength(12)]],
-    clientGroup: [null, Validators.required]
+    clientGroup: [null, Validators.required],
+    sms: [null]
   })
   err = ''
 
   constructor(
     private fb: FormBuilder,
-    private formService: FormService
+    private formService: FormService,
+    private router: Router
   ) {
   }
 
   ngOnInit(): void {
+    if (this.formService.formProfileValue) {
+      this.form.patchValue(this.formService.formProfileValue)
+    }
   }
 
   currentNumber() {
     if (this.form.get('phoneNumber').value?.length < 2) {
       this.form.get('phoneNumber').patchValue('+7')
     }
-    console.log(this.form.value.phoneNumber)
   }
 
-  onSubmit() {
+  nextPage() {
     if (this.form.invalid) {
       this.err = 'Заполните все обязательные поля'
     } else {
       this.err = ''
-      this.formService.formOneValue = {...this.form.value}
-      console.log(this.formService.formOneValue)
+      this.formService.formProfileValue = {...this.form.value}
       this.form.reset()
-      this.form.get('phoneNumber').patchValue('+7')
+      this.router.navigate(['address'])
     }
   }
 
+
   test() {
-    this.form.patchValue(this.formService.formOneValue)
+    this.form.patchValue(this.formService.formProfileValue)
+  }
+
+  clearForm() {
+    this.form.reset()
+    this.form.get('phoneNumber').patchValue('+7')
   }
 }
