@@ -23,8 +23,6 @@ export class ProfileFormComponent implements OnInit {
     sms: [null]
   })
 
-  err = ''
-
   constructor(
     private fb: FormBuilder,
     private formService: FormService,
@@ -49,7 +47,6 @@ export class ProfileFormComponent implements OnInit {
     if (this.form.invalid) {
       this.alertService.danger('Заполните все обязательные поля')
     } else {
-      this.err = ''
       this.formService.formProfileValue = {...this.form.value}
       this.form.reset()
       this.router.navigate(['address'])

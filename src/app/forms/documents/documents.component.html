@@ -1,0 +1,86 @@
+<div class="border">
+
+  <div>
+    <h1>Поле документов</h1>
+    <hr>
+  </div>
+
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <div>
+      <label for="docType">Тип документа</label>
+      <select id='docType' formControlName="docType">
+        <option value="passport">Паспорт</option>
+        <option value="certificate">Cвидетельство о рождении</option>
+        <option value="driversLicense">Вод.удостоверение</option>
+      </select>
+    </div>
+    <ng-container [ngSwitch]="form.get('docType').value">
+      <div *ngSwitchCase="'passport'">
+        <div>
+          <label for="series">Серия</label>
+          <input id="series" type="number" formControlName="series">
+        </div>
+
+        <div>
+          <label for="number">Номер</label>
+          <input id="number" type="number" formControlName="number">
+        </div>
+
+        <div>
+          <label for="extradition">Кем выдан?</label>
+          <input id="extradition" type="text" formControlName="extradition">
+        </div>
+
+        <div [class.invalid]="form.get('date').touched && form.get('date').invalid">
+          <label for='date'>Дата выдачи <sup>*</sup></label>
+          <input id="date" type="date" formControlName="date">
+          <small
+            *ngIf="form.get('date').touched && form.get('date').invalid && form.get('date').errors['required']">Веедите
+            дату получения паспорта</small>
+        </div>
+
+        <small><sup>*</sup> Поля обязательные для ввода</small>
+      </div>
+
+      <div *ngSwitchCase="'certificate'">
+
+        <div>
+          <label for="seriesCertificate">Серия</label>
+          <input id="seriesCertificate" type="number" formControlName="seriesCertificate">
+        </div>
+
+        <div>
+          <label for="numberCertificate">Номер</label>
+          <input id="numberCertificate" type="number" formControlName="numberCertificate">
+        </div>
+
+        <div>
+          <label for='dateCertificate'>Дата выдачи</label>
+          <input id="dateCertificate" type="date" formControlName="dateCertificate">
+        </div>
+        <div>
+          <label for="placeReg">Место государственной регистрации</label>
+          <input id="placeReg" type="text" formControlName="placeReg">
+        </div>
+      </div>
+
+      <div *ngSwitchCase="'driversLicense'">
+
+        <div>
+          <label for="driverNumber">Место государственной регистрации</label>
+          <input id="driverNumber" type="number" formControlName="driverNumber">
+        </div>
+
+      </div>
+    </ng-container>
+
+    <div class="buttons">
+      <button class="btn-back" type="button" (click)="goPreviousPage()">Назад</button>
+      <button class="btn" type="submit">Зарегестрироваться</button>
+    </div>
+
+  </form>
+</div>
+

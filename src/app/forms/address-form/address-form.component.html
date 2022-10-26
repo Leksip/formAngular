@@ -42,11 +42,10 @@
 
     <small><sup>*</sup> Поля обязательные для ввода</small>
 
-    <div>
+    <div class="buttons">
       <button class="btn-back" type="button" (click)="goPreviousPage()">Назад</button>
       <button class="btn" type="button" (click)="nextPage()">Далее</button>
     </div>
 
-    <div *ngIf="err" class="error">{{err}}</div>
   </form>
 </div>

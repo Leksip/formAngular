@@ -34,12 +34,13 @@ small {
 }
 
 .btn {
-  background: rgba(0, 255, 17, 0.68);
+  background: rgba(77, 138, 239, 0.82);
   color: #333;
   cursor: pointer;
   padding: 0.4rem 1.5rem;
   font-size: 1rem;
   border-color: rgba(50, 50, 55, 0.63);
+  font-weight: bold;
 
   &:disabled {
     background-color: rgba(42, 43, 84, 0.33);
@@ -54,6 +55,7 @@ small {
   padding: 0.4rem 1.2rem;
   font-size: 1rem;
   border-color: rgba(50, 50, 55, 0.63);
+  font-weight: bold;
 }
 
 input {

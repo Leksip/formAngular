@@ -6,6 +6,7 @@ import {Injectable} from '@angular/core';
 export class FormService {
   formProfileValue
   formAddressValue
+  formDocumentsValue
 
 
   constructor() {

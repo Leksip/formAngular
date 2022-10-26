@@ -7,6 +7,8 @@ import {ProfileFormComponent} from './forms/profile-form/profile-form.component'
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AddressFormComponent } from './forms/address-form/address-form.component';
 import { AlertComponent } from './shared/alert/alert.component';
+import { DocumentsComponent } from './forms/documents/documents.component';
+import { SuccessComponent } from './forms/success/success.component';
 
 
 @NgModule({
@@ -15,6 +17,8 @@ import { AlertComponent } from './shared/alert/alert.component';
     ProfileFormComponent,
     AddressFormComponent,
     AlertComponent,
+    DocumentsComponent,
+    SuccessComponent,
   ],
   imports: [
     BrowserModule,

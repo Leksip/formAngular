@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {FormService} from "../../shared/form.service";
 import {Router} from "@angular/router";
+import {AlertService} from "../../shared/alert.service";
 
 @Component({
   selector: 'app-address-form',
@@ -17,12 +18,12 @@ export class AddressFormComponent implements OnInit {
     street: [null],
     house: [null],
   })
-  err = ''
 
   constructor(
     private fb: FormBuilder,
     private formService: FormService,
-    private route: Router
+    private router: Router,
+    private alertService: AlertService
   ) {
   }
 
@@ -35,22 +36,18 @@ export class AddressFormComponent implements OnInit {
 
   nextPage() {
     if (this.form.invalid) {
-      this.err = 'Заполните все обязательные поля'
+      this.alertService.danger('Заполните все обязательные поля')
     } else {
-      this.err = ''
       this.formService.formAddressValue = {...this.form.value}
       console.log(this.formService.formAddressValue)
       this.form.reset()
+      this.alertService.success('Поля успешно заполнены')
+      this.router.navigate(['documents'])
     }
   }
 
 
-  test() {
-    this.form.patchValue(this.formService.formAddressValue)
-  }
-
-
   goPreviousPage() {
-    this.route.navigate([''])
+    this.router.navigate([''])
   }
 }
