@@ -1,117 +1,13 @@
-.border {
-  background-color: #fff;
+@import "src/assets/styles/reset";
+
+
+.form-box {
+  bottom: 0;
   padding: 35px 45px;
-  border: 4px solid rgba(50, 50, 55, 0.63);
+  box-shadow: 0 0 19px 5px #c2deeaba;
   max-width: 630px;
-  margin: 50px auto;
-}
-
-sup {
-  color: red;
-}
-
-h1 {
-  margin: 5px auto;
-}
-
-hr {
-  margin: 0 0 0 5px;
-}
-
-.multiselect {
-  padding: 5px 50px 5px 5px;
-}
-
-.invalid {
-  input {
-    border-color: red;
-  }
-}
-
-small {
-  color: red;
-  margin-left: 5px;
-}
-
-.btn {
-  background: rgba(77, 138, 239, 0.82);
-  color: #333;
-  cursor: pointer;
-  padding: 0.4rem 1.5rem;
-  font-size: 1rem;
-  border-color: rgba(50, 50, 55, 0.63);
-  font-weight: bold;
-
-  &:disabled {
-    background-color: rgba(42, 43, 84, 0.33);
-    color: #111;
-  }
-}
-
-.btn-back {
-  background: #ffffff;
-  color: #333;
-  cursor: pointer;
-  padding: 0.4rem 1.2rem;
-  font-size: 1rem;
-  border-color: rgba(50, 50, 55, 0.63);
-  font-weight: bold;
-}
-
-input {
-  padding: 0.3rem;
-
-}
-
-div {
-  margin: 20px auto;
-  font-family: 'Bahnschrift', sans-serif;
-  font-size: 15px;
-}
-
-label {
-  padding: 5px;
-  margin: 15px auto;
-}
-
-p {
-  padding: 5px;
-  margin: 15px auto;
-}
-
-.checked {
-  margin: 30px auto;
-}
-
-.check {
-  cursor: pointer;
-}
-
-select {
-  padding: 0.3rem
-}
-
-.btn:hover {
-  opacity: 0.8;
-}
-
-.error {
-  color: red;
-}
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-}
-.alert-danger {
-  background: red;
-  color: #fff;
-}
-.alert-success {
-  background: green;
-  color: #fff;
-}
-.buttons{
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
+  height: 85vh;
+  margin: 40px auto;
+  background-image: linear-gradient(285deg, #ffffff, rgba(225, 237, 228, 0.6392156863), rgba(255, 246, 246, 0.3803921569));
+  border-radius: 10px;
 }
