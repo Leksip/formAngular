@@ -6,21 +6,34 @@
 
     <form [formGroup]="form" class="profile-form__group">
 
-      <div class="profile-form__input-container"
-           [class.invalid]="form.get('secondName').touched && form.get('secondName').invalid">
+      <div class="profile-form__input-container">
         <label for="secondName" class="profile-form__label">Фамилия <sup>*</sup></label>
-        <input id="secondName" type="text" formControlName="secondName" class="profile-form__input">
-        <small
-          *ngIf="form.get('secondName').touched && form.get('secondName').invalid && form.get('secondName').errors['required']">Поле
-          не может быть пустым</small>
+        <input id="secondName"
+               type="text"
+               formControlName="secondName"
+               class="profile-form__input"
+               [class.invalid]="form.get('secondName').touched && form.get('secondName').invalid || form.get('secondName').invalid && formInvalid"
+        >
+        <div class="profile-form__error">
+          <small
+            *ngIf="form.get('secondName').touched && form.get('secondName').invalid && form.get('secondName').errors['required'] || form.get('secondName').invalid && formInvalid">Поле
+            не может быть пустым</small>
+        </div>
       </div>
-      <div class="profile-form__input-container"
-           [class.invalid]="form.get('firstName').touched && form.get('firstName').invalid">
+
+      <div class="profile-form__input-container">
         <label for="firstName" class="profile-form__label">Имя<sup>*</sup></label>
-        <input id="firstName" type="text" formControlName="firstName" class="profile-form__input">
-        <small
-          *ngIf="form.get('firstName').touched && form.get('firstName').invalid && form.get('firstName').errors['required']">Поле
-          не может быть пустым</small>
+        <input id="firstName"
+               type="text"
+               formControlName="firstName"
+               class="profile-form__input"
+               [class.invalid]="form.get('firstName').touched && form.get('firstName').invalid || form.get('firstName').invalid && formInvalid"
+        >
+        <div class="profile-form__error">
+          <small
+            *ngIf="form.get('firstName').touched && form.get('firstName').invalid && form.get('firstName').errors['required'] || form.get('firstName').invalid && formInvalid">Поле
+            не может быть пустым</small>
+        </div>
       </div>
 
       <div class="profile-form__input-container">
@@ -29,16 +42,21 @@
       </div>
 
       <div class="profile-form__sex-container">
-        <div class="profile-form__input-container_birthday"
-             [class.invalid]="form.get('birthday').touched && form.get('birthday').invalid">
+        <div class="profile-form__input-container_birthday">
           <label for="birthday" class="profile-form__label">Дата рождения <sup>*</sup></label>
-            <input id="birthday" type="date" formControlName="birthday" class="profile-form__input">
+          <input id="birthday"
+                 type="date"
+                 formControlName="birthday"
+                 class="profile-form__input"
+                 [class.invalid]="form.get('birthday').touched && form.get('birthday').invalid || form.get('birthday').invalid && formInvalid"
+          >
           <div class="profile-form__error">
             <small
-              *ngIf="form.get('birthday').touched && form.get('birthday').invalid && form.get('birthday').errors['required']">Поле
+              *ngIf="form.get('birthday').touched && form.get('birthday').invalid && form.get('birthday').errors['required'] || form.get('birthday').invalid && formInvalid">Поле
               не может быть пустым</small>
           </div>
         </div>
+
         <div class="profile-form__input-container_sex">
           <p>Пол:</p>
           <div class="profile-form__male-container">
@@ -51,21 +69,24 @@
           </div>
         </div>
       </div>
-      <div class="profile-form__input-container"
-           [class.invalid]="form.get('phoneNumber').touched && form.get('phoneNumber').invalid">
+
+      <div class="profile-form__input-container">
         <label for="phoneNumber" class="profile-form__label">Мобильный телефон<sup>*</sup></label>
-
-        <input id="phoneNumber" type="tel" maxlength="12" formControlName="phoneNumber"
-               (ngModelChange)="currentNumber()" class="profile-form__input">
+        <input id="phoneNumber"
+               type="tel"
+               maxlength="12"
+               formControlName="phoneNumber"
+               (ngModelChange)="currentNumber()" class="profile-form__input"
+               [class.invalid]="form.get('phoneNumber').touched && form.get('phoneNumber').invalid  || form.get('phoneNumber').invalid && formInvalid"
+        >
         <div class="profile-form__error">
-        <small
-          *ngIf="form.get('phoneNumber').touched && form.get('phoneNumber').invalid && form.get('phoneNumber').errors['required']">Поле
-          не может быть пустым</small>
-        <small
-          *ngIf="form.get('phoneNumber').touched && form.get('phoneNumber').invalid && form.get('phoneNumber').errors['minlength']">Телефон
-          должен содержать 11 цифр</small>
+          <small
+            *ngIf="form.get('phoneNumber').touched && form.get('phoneNumber').invalid && form.get('phoneNumber').errors['required']">Поле
+            не может быть пустым</small>
+          <small
+            *ngIf="form.get('phoneNumber').touched && form.get('phoneNumber').invalid && form.get('phoneNumber').errors['minlength']  || form.get('phoneNumber').invalid && formInvalid">Телефон
+            должен содержать 11 цифр</small>
         </div>
-
       </div>
 
       <div class="profile-form__input-container">
@@ -77,17 +98,24 @@
         </select>
       </div>
 
-      <div class="profile-form__input-container"
-           [class.invalid]="form.get('clientGroup').touched && form.get('clientGroup').invalid">
+      <div class="profile-form__input-container">
         <label for="clientGroup" class="profile-form__label">Группа клиентов <sup>*</sup></label>
-        <select multiple="multiple" id="clientGroup" size="3" formControlName="clientGroup" class="profile-form__input">
+        <select multiple="multiple"
+                id="clientGroup"
+                size="3"
+                formControlName="clientGroup"
+                class="profile-form__input_multiple"
+                [class.invalid]="form.get('clientGroup').touched && form.get('clientGroup').invalid  || form.get('clientGroup').invalid && formInvalid"
+        >
           <option value="Ivanov">Иванов</option>
           <option value="Zakharova">Захарова</option>
           <option value="Cherisheva">Черышева</option>
         </select>
-        <small
-          *ngIf="form.get('clientGroup').touched && form.get('clientGroup').invalid && form.get('clientGroup').errors['required']">Поле
-          не может быть пустым</small>
+        <div class="profile-form__error">
+          <small
+            *ngIf="form.get('clientGroup').touched && form.get('clientGroup').invalid && form.get('clientGroup').errors['required'] || form.get('clientGroup').invalid && formInvalid">Поле
+            не может быть пустым</small>
+        </div>
       </div>
 
       <div class="profile-form__input-container row">

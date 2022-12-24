@@ -26,7 +26,7 @@
     flex: 0 1;
     width: 100%;
 
-    &_sex,&_birthday {
+    &_sex, &_birthday {
       display: flex;
       gap: 3px;
       flex-direction: column;
@@ -44,6 +44,17 @@
     padding: 10px;
     border-radius: 5px;
     box-shadow: 1px 1px 9px #5c5c5c;
+
+    &_multiple {
+      padding: 8px;
+      border-radius: 5px;
+      box-shadow: 1px 1px 9px #5c5c5c;
+      overflow: hidden;
+
+      option:not(:last-child) {
+        margin-bottom: 2px;
+      }
+    }
   }
 
   &__description {
@@ -96,6 +107,7 @@
 
   &__error {
     color: #ff0d0d;
+    font-size: 12px;
   }
 }
 
@@ -104,5 +116,9 @@
   gap: 5px;
   font-size: 10px;
   align-items: flex-end;
+}
+
+.invalid {
+  box-shadow: 0 0 3px #f14747c2;
 }
 

@@ -18,7 +18,6 @@ export class AlertService {
 
   danger(text: string) {
     this.alert$.next({type: 'danger', text})
-    console.log('danger')
   }
 
 }

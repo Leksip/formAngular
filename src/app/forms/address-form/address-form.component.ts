@@ -10,6 +10,10 @@ import {AlertService} from "../../shared/alert.service";
   styleUrls: ['./address-form.component.scss']
 })
 export class AddressFormComponent implements OnInit {
+
+  formInvalid: boolean = false;
+
+
   form: FormGroup = this.fb.group({
     index: [null],
     country: [null],
@@ -37,12 +41,14 @@ export class AddressFormComponent implements OnInit {
   nextPage() {
     if (this.form.invalid) {
       this.alertService.danger('Заполните все обязательные поля')
+      this.formInvalid = true
     } else {
       this.formService.formAddressValue = {...this.form.value}
       console.log(this.formService.formAddressValue)
       this.form.reset()
       this.alertService.success('Поля успешно заполнены')
       this.router.navigate(['documents'])
+      this.formInvalid = false
     }
   }
 

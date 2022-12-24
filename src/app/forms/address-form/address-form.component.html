@@ -1,51 +1,58 @@
 <div class="address-form">
-<div class="form-box">
+  <div class="form-box">
 
     <h1 class="address-form__title">Адрес</h1>
     <hr>
 
-  <form [formGroup]="form" class="address-form__group">
+    <form [formGroup]="form" class="address-form__group">
 
-    <div class="address-form__input-container">
-      <label for="index">Индекс</label>
-      <input id="index" type="number" formControlName="index">
-    </div>
+      <div class="address-form__input-container">
+        <label for="index">Индекс</label>
+        <input class="address-form__input" id="index" type="number" formControlName="index">
+      </div>
 
-    <div class="address-form__input-container">
-      <label for='country'>Страна</label>
-      <input id='country' type="text" formControlName='country'>
-    </div>
+      <div class="address-form__input-container">
+        <label for='country'>Страна</label>
+        <input class="address-form__input" id='country' type="text" formControlName='country'>
+      </div>
 
-    <div class="address-form__input-container">
-      <label for='area'>Область</label>
-      <input id='area' type="text" formControlName='area'>
-    </div>
+      <div class="address-form__input-container">
+        <label for='area'>Область</label>
+        <input class="address-form__input" id='area' type="text" formControlName='area'>
+      </div>
 
-    <div class="address-form__input-container" [class.invalid]="form.get('city').touched && form.get('city').invalid">
-      <label for="city">Город<sup class="address-form__red">*</sup></label>
-      <input id="city" type="text" formControlName="city">
-      <small
-        *ngIf="form.get('city').touched && form.get('city').invalid && form.get('city').errors['required']">Введите
-        город</small>
-    </div>
+      <div class="address-form__input-container">
+        <label for="city">Город<sup class="address-form__red">*</sup></label>
+        <input class="address-form__input"
+               id="city" type="text"
+               formControlName="city"
+               [class.invalid]="form.get('city').touched && form.get('city').invalid || form.get('city').invalid && formInvalid"
+        >
+        <div class="address-form__error">
+          <small
+            *ngIf="form.get('city').touched && form.get('city').invalid && form.get('city').errors['required'] || form.get('city').invalid && formInvalid">Введите
+            город</small>
+        </div>
+      </div>
 
-    <div class="address-form__input-container">
-      <label for='street'>Улица</label>
-      <input id='street' type="text" formControlName='street'>
-    </div>
+      <div class="address-form__input-container">
+        <label for='street'>Улица</label>
+        <input class="address-form__input" id='street' type="text" formControlName='street'>
+      </div>
 
-    <div class="address-form__input-container">
-      <label for='house'>Дом</label>
-      <input id='house' type="text" formControlName='house'>
-    </div>
+      <div class="address-form__input-container">
+        <label for='house'>Дом</label>
+        <input class="address-form__input" id='house' type="text" formControlName='house'>
+      </div>
 
-    <small class="address-form__text"><sup class="address-form__text_red">*</sup> Поля обязательные для ввода</small>
+      <small class="address-form__description"><sup class="address-form__text_red">*</sup> Поля обязательные для
+        ввода</small>
 
-    <div class="address-form__buttons">
-      <button class="address-form__button-back" type="button" (click)="goPreviousPage()">Назад</button>
-      <button class="address-form__button-next" type="button" (click)="nextPage()">Далее</button>
-    </div>
+      <div class="address-form__buttons">
+        <button class="address-form__button-back" type="button" (click)="goPreviousPage()">Назад</button>
+        <button class="address-form__button-next" type="button" (click)="nextPage()">Далее</button>
+      </div>
 
-  </form>
-</div>
+    </form>
+  </div>
 </div>

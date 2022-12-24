@@ -1,0 +1,92 @@
+.address-form {
+  margin: 0 20px;
+
+  &__title {
+    font-size: 30px;
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 0 1;
+    width: 100%;
+  }
+
+  &__input {
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 9px #5c5c5c;
+  }
+
+  &__description {
+    width: 100%;
+  }
+
+  &__buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  &__button-back {
+    color: white;
+    padding: 10px;
+    width: 95px;
+    border-radius: 5px;
+    text-align: center;
+    background: #ff4d4d;
+    cursor: pointer;
+    opacity: .85;
+    transition: .2s all;
+
+    &:hover {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+
+  &__button-next {
+    color: white;
+    padding: 10px;
+    width: 95px;
+    border-radius: 5px;
+    text-align: center;
+    background: #1ebd56;
+    cursor: pointer;
+    transition: .2s all;
+    opacity: .85;
+
+    &:hover {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+
+  sup {
+    color: red;
+  }
+
+  &__error {
+    color: #ff0d0d;
+    font-size: 12px;
+  }
+}
+
+.row {
+  flex-direction: row;
+  gap: 5px;
+  font-size: 10px;
+  align-items: flex-end;
+}
+
+.invalid {
+  box-shadow: 0 0 3px #f14747c2;
+}

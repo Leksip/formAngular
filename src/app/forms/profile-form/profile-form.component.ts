@@ -11,6 +11,8 @@ import {AlertService} from "../../shared/alert.service";
   styleUrls: ['./profile-form.component.scss']
 })
 export class ProfileFormComponent implements OnInit {
+  formInvalid:boolean = false
+
   form: FormGroup = this.fb.group({
     firstName: [null, Validators.required],
     secondName: [null, Validators.required],
@@ -46,11 +48,14 @@ export class ProfileFormComponent implements OnInit {
   nextPage() {
     if (this.form.invalid) {
       this.alertService.danger('Заполните все обязательные поля')
+      this.formInvalid = true
     } else {
       this.formService.formProfileValue = {...this.form.value}
       this.form.reset()
       this.router.navigate(['address'])
       this.alertService.success('Поля заполнены')
+      this.formInvalid = false
+
     }
   }
 

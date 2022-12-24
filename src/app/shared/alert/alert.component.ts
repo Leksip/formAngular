@@ -26,7 +26,7 @@ export class AlertComponent implements OnInit, OnDestroy {
       const timeout = setTimeout(() => {
         clearTimeout(timeout)
         this.text = ''
-      }, 10000000)
+      }, this.delay)
     })
   }
 
