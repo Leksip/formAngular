@@ -1,9 +1,23 @@
-.alert-wrap{
+.alert {
   position: fixed;
-  top: 50px;
-  right: 580px;
+  top: 5%;
+  right: 20%;
   max-width: 200px;
+
+  &__wrap {
+    border-radius: 5px;
+  }
+
+  &__text {
+    color: white;
+    padding: 20px;
+  }
 }
-.alert{
-  padding: 2px 10px;
+
+.alert-danger {
+  background: rgba(237, 61, 61, 0.82);
+}
+
+.alert-success {
+  background: rgb(0 233 125);
 }

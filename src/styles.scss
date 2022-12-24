@@ -4,10 +4,9 @@
 .form-box {
   bottom: 0;
   padding: 35px 45px;
-  box-shadow: 0 0 19px 5px #c2deeaba;
+  background: rgb(191 202 207 / 48%);
+  box-shadow: 0 0 19px 5px rgb(66 77 82 / 73%);
   max-width: 630px;
-  height: 85vh;
   margin: 40px auto;
-  background-image: linear-gradient(285deg, #ffffff, rgba(225, 237, 228, 0.6392156863), rgba(255, 246, 246, 0.3803921569));
   border-radius: 10px;
 }

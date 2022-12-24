@@ -23,11 +23,10 @@ export class AlertComponent implements OnInit, OnDestroy {
     this.aSub = this.alertService.alert$.subscribe(alert => {
       this.text = alert.text
       this.type = alert.type
-console.log(this.text)
       const timeout = setTimeout(() => {
         clearTimeout(timeout)
         this.text = ''
-      }, this.delay)
+      }, 10000000)
     })
   }
 
