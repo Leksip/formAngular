@@ -122,3 +122,13 @@
   box-shadow: 0 0 3px #f14747c2;
 }
 
+@media screen and (max-width: 410px) {
+  .profile-form__sex-container{
+    gap: 25px;
+  }
+}
+@media screen and (max-width: 385px) {
+  .profile-form__sex-container{
+    gap: 10px;
+  }
+}

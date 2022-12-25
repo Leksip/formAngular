@@ -10,8 +10,11 @@ import {AlertService} from "../../shared/alert.service";
   styleUrls: ['./documents.component.scss']
 })
 export class DocumentsComponent implements OnInit {
+
+  formInvalid: boolean = false
+
   form: FormGroup = this.fb.group({
-    docType: ['passport'],
+    docType: [''],
     series: [''],
     number: [''],
     extradition: [''],
@@ -22,8 +25,6 @@ export class DocumentsComponent implements OnInit {
     placeReg: [''],
     driverNumber: ['']
   })
-
-  err = ''
 
   constructor(
     private fb: FormBuilder,
@@ -44,10 +45,13 @@ export class DocumentsComponent implements OnInit {
   onSubmit() {
     if (this.form.invalid) {
       this.alertService.danger('Заполните все обязательные поля')
+      this.formInvalid = true
+      this.form.get('docType').patchValue('passport')
     } else {
       this.formService.formDocumentsValue = {...this.form.value}
       this.form.reset()
       this.router.navigate(['success'])
+      this.formInvalid = false
     }
   }
 }

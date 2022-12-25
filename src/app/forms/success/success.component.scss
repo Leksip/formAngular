@@ -1,5 +1,11 @@
-.border__success {
-  color: black;
-  background-color: rgba(77, 138, 239, 0.82);
-  padding: 1rem;
+.success{
+  padding: 0 10px;
+&__title {
+  font-size: 3vh;
+  font-style: italic;
+  font-weight: 700;
+  color: #241f1fdb;
+  text-shadow: 2px 2px #ffffffad;
+  text-align: center;
+}
 }
